@@ -1,0 +1,163 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <world name="lesson_world">
+
+    <include><uri>model://ground_plane</uri></include>
+    <include><uri>model://sun</uri></include>
+
+
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>55.7717</latitude_deg>
+      <longitude_deg>37.6961</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+
+
+    <model name="zone_a">
+      <static>true</static>
+      <pose>-6 0 0.005 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.5</radius>
+              <length>0.01</length>
+            </cylinder>
+            </geometry>
+          <material>
+            <ambient>0 1 0 0.5</ambient>
+            <diffuse>0 1 0 0.5</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+
+     <model name="zone_b">
+      <static>true</static>
+      <pose>7 -1 0.005 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.5</radius>
+              <length>0.01</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>1 0 0 0.5</ambient>
+            <diffuse>1 0 0 0.5</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+
+    <model name="wall_1">
+      <static>true</static>
+      <pose>-5 1 0.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>0.1 6 0.5</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.1 6 0.5</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+<model name="wall_2">
+      <static>true</static>
+      <pose>-2 -2 0.5 0 0 0.7</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>0.1 7 1</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.1 7 1</size></box></geometry>
+          <material>
+            <ambient>0 0 1 1</ambient>
+            <diffuse>0 0 1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+<model name="cylinder_1">
+    <static>true</static>
+    <pose>0 3.5 0.5 0 0 0</pose>
+    <link name="link">
+    <collision name="collision">
+        <geometry>
+        <cylinder>
+            <radius>0.5</radius>
+            <length>0.5</length>
+        </cylinder>
+        </geometry>
+    </collision>
+    <visual name="visual">
+    <geometry>
+        <cylinder>
+            <radius>0.5</radius>
+            <length>0.5</length>
+        </cylinder>
+    </geometry>
+        <material>
+            <ambient>1 0 0 0.5</ambient>
+            <diffuse>1 0 0 0.5</diffuse>
+        </material>
+    </visual>
+    </link>
+</model>
+
+
+<model name="sphere_1">
+    <static>true</static>
+    <pose>3 0 0.5 0 0 0</pose>
+    <link name="link">
+    <collision name="collision">
+        <geometry>
+        <sphere>
+            <radius>0.5</radius>
+        </sphere>
+        </geometry>
+    </collision>
+    <visual name="visual">
+    <geometry>
+         <sphere>
+            <radius>0.5</radius>
+        </sphere>
+    </geometry>
+        <material>
+            <ambient>1 0 0 0.5</ambient>
+            <diffuse>1 0 0 0.5</diffuse>
+        </material>
+    </visual>
+    </link>
+</model>
+
+<model name="box_1">
+      <static>true</static>
+      <pose>3 -5 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>2 2 1</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>2 2 1</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+  </world>
+</sdf>
