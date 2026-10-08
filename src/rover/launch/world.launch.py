@@ -20,14 +20,13 @@ def generate_launch_description():
     world = os.path.join(pkg, 'world', 'wall.world')
     robot_sdf = os.path.join(pkg, 'models', 'rover', 'model.sdf')
 
-    # Запуск Gazebo с явным подключением ROS Factory плагина
     gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(gz_ros, 'launch', 'gazebo.launch.py')),
         launch_arguments={
             'world': world,
             'gui': LaunchConfiguration('gui'),
-            'extra_gazebo_args': '-s libgazebo_ros_factory.so'  # <-- КЛЮЧЕВОЙ ФИКС
+            'extra_gazebo_args': '-s libgazebo_ros_factory.so' 
         }.items())
 
     spawn = Node(
@@ -45,10 +44,6 @@ def generate_launch_description():
         arguments=['-d', os.path.join(pkg, 'rviz', 'rover.rviz')],
         parameters=[{'use_sim_time': True}])
 
-    camera_tf = Node(
-        package='tf2_ros', executable='static_transform_publisher',
-        arguments=['0.05', '0', '0.12', '0', '0', '0',
-                   'base_link', 'camera_link'])
     optical_tf = Node(
     package='tf2_ros', executable='static_transform_publisher',
     arguments=['0', '0', '0', '-1.5708', '0', '-1.5708',

@@ -13,7 +13,6 @@
 
 using namespace std::chrono_literals;
 
-// приводит угол к диапазону -pi..pi
 double normalize(double a) { return std::atan2(std::sin(a), std::cos(a)); }
 
 class Navigator : public rclcpp::Node
@@ -112,7 +111,7 @@ private:
       cmd.linear.x = lin_speed_;
       cmd.angular.z = 0.0;
     } else {
-      cmd.angular.z = std::clamp(1.5 * heading_err, -ang_speed_, ang_speed_);
+      cmd.angular.z = std::clamp(1.5 * heading_err, -ang_speed_, ang_speed_); //обрезаем скорость если слишком быстро
       cmd.linear.x = (std::fabs(heading_err) < 0.5) ? lin_speed_ : 0.0;
     }
     break;
@@ -126,7 +125,7 @@ private:
     const double wall = (side_ == 1) ? left : right;  
     if (front < safe_dist_) { state_ = State::TURN; break; }
 
-    // держим стену сбоку на ~0.5 м
+    // держим стену сбоку на 0.5 м
     const double err = std::isfinite(wall) ? (wall - 0.5) : 1.0;
     cmd.linear.x = lin_speed_;
     cmd.angular.z = std::clamp(side_ * 1.5 * err, -ang_speed_, ang_speed_);
