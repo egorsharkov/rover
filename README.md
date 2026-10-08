@@ -9,6 +9,10 @@
 - **Робот:** TurtleBot3 Burger, расширенный depth-камерой и GPS
 - **Язык:** C++ (узел навигации), Python (launch)
 
+**Видео демонстрации:** https://drive.google.com/file/d/1-f1oNYNwVJ2IaWqvLhIm9XfHA0ncmWDP/view?usp=drive_link
+
+
+
 ## Структура репозитория
 
 ```
